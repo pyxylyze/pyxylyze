@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;pyxylyze.github.io&#x2F;pyxylyze&#x2F;iosevka/iosevka.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;pyxylyze.github.io&#x2F;pyxylyze&#x2F;style.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;pyxylyze.github.io&#x2F;pyxylyze&#x2F;prism-theme.css">
+    <title>Pyxylyze</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <a href="https:&#x2F;&#x2F;pyxylyze.github.io&#x2F;pyxylyze&#x2F;"><h1>Pyxylyze</h1><h2>Software Design</h2></a>
+        </div>
+        <div class="middle">
+            <div class="nav-links">
+            </div>
+        </div>
+        <div class="right">
+            <div class="social-links">
+                <a href="https://twitter.com/pyxylyze">Twitter</a>
+                <a href="https://github.com/pyxylyze">Github</a>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="container">
+            
+<article class="post">
+  <header>
+    <h1 class="title">
+      Language First Steps: Lisp
+    </h1>
+    <h2 class="subtitle">Published: <span>2021-03-09</span> | Updated: <span>2021-05-03</span></h2>
+    <h4 class="meta">
+      
+        
+          <span class="tag">#tutorial</span>
+        
+      
+      
+        
+          in <span class="category">tech</span>
+        
+      
+    </h4>
+  </header>
+
+  <section class="toc">
+    <h2>Contents</h2>
+    
+    <ul>
+    
+        <li>
+            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#installation">Installation</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#steel-bank-common-lisp-sbcl">Steel Bank Common Lisp (sbcl)</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#repl">REPL</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#quicklisp">Quicklisp</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#local-registry">Local Registry</a>
+                            
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+        <li>
+            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#defining-a-system-manually">Defining A System Manually</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#system-definition">System Definition</a>
+                            
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+        <li>
+            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#define-a-system-automatically">Define A System Automatically</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#quickproject">Quickproject</a>
+                            
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+        <li>
+            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#executables">Executables</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#doing-stuff">Doing Stuff</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#repl-1">REPL</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#testing">Testing</a>
+                            
+                                <ul>
+                                    
+                                        <li>
+                                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#rove">Rove</a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://pyxylyze.github.io/pyxylyze/2021/language-first-steps-lisp/#buildapp">Buildapp</a>
+                            
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+    </ul>
+
+  </section>
+
+  <section class="content">
+    <h1 id="installation">Installation</h1>
+<h2 id="steel-bank-common-lisp-sbcl">Steel Bank Common Lisp (sbcl)</h2>
+<pre><code class="language-bash" data-lang="bash">$ brew install sbcl
+</code></pre>
+<h2 id="repl">REPL</h2>
+<pre><code class="language-bash" data-lang="bash">$ sbcl
+* _
+</code></pre>
+<h2 id="quicklisp">Quicklisp</h2>
+<pre><code class="language-bash" data-lang="bash">$ mkdir ql
+$ cd ql
+$ curl -O https://beta.quicklisp.org/quicklisp.lisp
+$ curl -O https://beta.quicklisp.org/quicklisp.lisp.asc
+$ sbcl --load quicklisp.lisp
+
+* (quicklisp-quickstart:install :path &quot;.quicklisp/&quot;)
+* (ql:add-to-init-file)
+* (quit)
+
+$ cd ..
+$ rm -rf ql
+</code></pre>
+<p>Now you should have a ~/.sbclrc file and ~/.quicklisp/ directory.</p>
+<pre><code class="language-lisp" data-lang="lisp">* (ql:quickload :vecto)
+</code></pre>
+<h2 id="local-registry">Local Registry</h2>
+<p>By default Quicklisp will find your projects in <code>~/.quicklisp/local-projects</code>.
+ASDF, the underlying package manager can also find projects on your system via a custom registry setting.</p>
+<p><code>~/.config/common-lisp/source-registry.conf</code></p>
+<pre><code class="language-lisp" data-lang="lisp">(:source-registry
+  (:tree (:home &quot;projects/lisp&quot;))
+  :inherit-configuration)
+</code></pre>
+<h1 id="defining-a-system-manually">Defining A System Manually</h1>
+<h2 id="system-definition">System Definition</h2>
+<p>The following definition is about the simplest ASDF system you can make in CL.</p>
+<pre><code class="language-lisp" data-lang="lisp">(asdf:defsystem :mylisp
+  :serial t
+  :components ((:file &quot;package&quot;)
+               (:file &quot;hello&quot;)))
+</code></pre>
+<pre><code class="language-lisp" data-lang="lisp">(defpackage :hello
+  (:use #:cl))
+</code></pre>
+<pre><code class="language-lisp" data-lang="lisp">(in-package :hello)
+
+(defun say-hello () &quot;Hello, Lisp!&quot;)
+</code></pre>
+<blockquote>
+<p><code>hello.lisp</code> - The hello lisp package</p>
+</blockquote>
+<h1 id="define-a-system-automatically">Define A System Automatically</h1>
+<h2 id="quickproject">Quickproject</h2>
+<p>There is a package called <a href="https://www.xach.com/lisp/quickproject/">quickproject</a> that creates a basic common lisp structure for you via the REPL.</p>
+<pre><code class="language-bash" data-lang="bash">$ sbcl
+
+* (ql:quickload :quickproject)
+* (quickproject:make-project #p&quot;~/projects/lisp/mylisp/&quot;)
+</code></pre>
+<h1 id="executables">Executables</h1>
+<h1 id="doing-stuff">Doing Stuff</h1>
+<h2 id="repl-1">REPL</h2>
+<p>To run code within a current REPL</p>
+<pre><code class="language-lisp" data-lang="lisp">(ql:quickload :my-lisp)
+(in-package :my-lisp)
+
+MYLISP&gt; (say-hello)
+</code></pre>
+<h2 id="testing">Testing</h2>
+<h3 id="rove">Rove</h3>
+<pre><code class="language-lisp" data-lang="lisp">(
+  ...
+  :depends-on (&quot;rove&quot;)
+)
+</code></pre>
+<blockquote>
+<p><code>mylisp.asd</code></p>
+</blockquote>
+<pre><code class="language-lisp" data-lang="lisp">(defpackage #:mylisp
+  (:use #:cl #:rove))
+</code></pre>
+<blockquote>
+<p><code>package.lisp</code></p>
+</blockquote>
+<pre><code class="language-lisp" data-lang="lisp">(deftest it-works
+    (testing &quot;2 is 2&quot;
+        (ok (= 2 2))))
+</code></pre>
+<blockquote>
+<p><code>mylisp.lisp</code></p>
+</blockquote>
+<h2 id="buildapp">Buildapp</h2>
+<p>You can create the <code>./buildapp</code> binary with quicklisp.</p>
+<pre><code class="language-lisp" data-lang="lisp">* (ql:quickload :buildapp)
+* (buildapp:build-buildapp)
+</code></pre>
+<p>You can use <code>buildapp</code> to generate an executable for any project with a <code>main</code> function.</p>
+<pre><code class="language-bash" data-lang="bash">$ buildapp --output mylisp \
+           --asdf-path . \
+           --asdf-tree ~/.quicklisp/dists \
+           --load-system mylisp \
+           --entry mylisp:main
+</code></pre>
+
+  </section>
+  
+  <section class="footer">
+    <div class="left">
+    </div>
+    <div class="middle"><a href="https:&#x2F;&#x2F;pyxylyze.github.io&#x2F;pyxylyze&#x2F;" class="next">Back to Home</a></div>
+    <div class="right">
+    </div>
+  </section>
+  
+</article>
+
+        </div>
+    </section>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+</html>
