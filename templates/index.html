@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set section = get_section(path="2021/_index.md") %}
+<div class="postfeed">
+    <h1 class="postfeed-title">
+        {{ section.title }}
+    </h1>
+    <div class="postfeed-list">
+        {% for page in section.pages %}
+        <article class="postfeed-item"><a href="{{ page.permalink | safe }}">
+                <div class="postfeed-item-inner">
+                    <div class="left">
+                        <h3 class="date">{{ page.date }}</h3>
+                        <h3 class="update-date">{{ page.updated }}</h3>
+                    </div>
+                    <div class="right">
+                        <h2 class="title">{{ page.title }}</h2>
+                        <h4 class="meta">
+                            {% if page.taxonomies.tags %}
+                            {% for tag in page.taxonomies.tags %}
+                            <span class="tag">#{{tag}}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% if page.taxonomies.category %}
+                            {% for category in page.taxonomies.category %}
+                            in <span class="category">{{category}}</span>
+                            {% endfor %}
+                            {% endif %}
+                        </h4>
+                    </div>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

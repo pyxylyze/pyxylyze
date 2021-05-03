@@ -1,0 +1,207 @@
+@import 'open-color.scss';
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #ffffff;
+	font-family: "Iosevka Web Oblique", "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre > code[class*="language-"] {
+	font-size: 1em;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	background: $oc-gray-5;
+	color: #ffffff;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	background: $oc-gray-5;
+	color: #ffffff;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	overflow: auto;
+	/* background-color: white; */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	/* padding: .2em;
+	padding-top: 1px;
+	padding-bottom: 1px; */
+	/* background: $oc-gray-2; */
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: $oc-gray-2;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: $oc-grape-3;
+}
+
+.token.attr-name {
+	color: $oc-yellow-1;
+}
+
+.token.attr-value {
+	color: $oc-violet-3;
+}
+
+.token.attribute {
+	color: $oc-violet-3;
+}
+
+.token.boolean {
+	color: $oc-grape-3;
+}
+
+.token.builtin {
+	color: $oc-yellow-1;
+}
+
+.token.cdata {
+	color: $oc-pink-2;
+}
+
+.token.char {
+	color: $oc-pink-2;
+}
+
+.token.class {
+	color: $oc-yellow-1;
+}
+
+.token.class-name {
+	color: $oc-yellow-1;
+}
+
+.token.comment {
+	color: #bebebe;
+}
+
+.token.constant {
+	color: $oc-grape-3;
+}
+
+.token.deleted {
+	color: $oc-pink-7;
+}
+
+.token.doctype {
+	color: #bebebe;
+}
+
+.token.entity {
+	color: $oc-pink-7;
+}
+
+.token.function {
+	color: $oc-yellow-1;
+}
+
+.token.hexcode {
+	color: #b6f292;
+}
+
+.token.id {
+	color: $oc-grape-3;
+	font-weight: bold;
+}
+
+.token.important {
+	color: $oc-grape-3;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: $oc-pink-2;
+}
+
+.token.keyword {
+	color: $oc-grape-3;
+}
+
+.token.number {
+	color: #ff8888;
+}
+
+.token.operator {
+	color: $oc-pink-5;
+}
+
+.token.prolog {
+	color: #bebebe;
+}
+
+.token.property {
+	color: $oc-pink-2;
+}
+
+.token.pseudo-class {
+	color: $oc-violet-3;
+}
+
+.token.pseudo-element {
+	color: $oc-violet-3;
+}
+
+.token.punctuation {
+	color: $oc-pink-5;
+}
+
+.token.regex {
+	color: #b6f292;
+}
+
+.token.selector {
+	color: $oc-pink-7;
+}
+
+.token.string {
+	color: $oc-violet-3;
+}
+
+.token.symbol {
+	color: $oc-pink-2;
+}
+
+.token.tag {
+	color: $oc-pink-7;
+}
+
+.token.unit {
+	color: #ff8888;
+}
+
+.token.url {
+	color: $oc-pink-7;
+}
+
+.token.variable {
+	color: $oc-pink-7;
+}

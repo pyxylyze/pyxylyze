@@ -1,0 +1,22 @@
+$html-font-size: 16px;
+$current-font-size: 16px;
+
+// - FUNCTIONS -----------------------------------------------------------------
+
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function rem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+
+@function lineheight($pxValue) {
+    @return #{rem($pxValue * 1.81)};
+}
+
+@mixin typeset($pxValue, $weight) {
+    font-size: rem($pxValue);
+    font-weight: $weight;
+    line-height: lineheight($pxValue);
+  }

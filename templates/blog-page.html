@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<article class="post">
+  <header>
+    <h1 class="title">
+      {{ page.title }}
+    </h1>
+    <h2 class="subtitle">Published: <span>{{ page.date }}</span> {% if page.updated %}| Updated: <span>{{page.updated}}</span>{% endif %}</h2>
+    <h4 class="meta">
+      {% if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+          <span class="tag">#{{tag}}</span>
+        {% endfor %}
+      {% endif %}
+      {% if page.taxonomies.category %}
+        {% for category in page.taxonomies.category %}
+          in <span class="category">{{category}}</span>
+        {% endfor %}
+      {% endif %}
+    </h4>
+  </header>
+
+  <section class="toc">
+    <h2>Contents</h2>
+    {% if page.toc %}
+    <ul>
+    {% for h1 in page.toc %}
+        <li>
+            <a href="{{h1.permalink | safe}}">{{ h1.title }}</a>
+            {% if h1.children %}
+                <ul>
+                    {% for h2 in h1.children %}
+                        <li>
+                            <a href="{{h2.permalink | safe}}">{{ h2.title }}</a>
+                            {% if h2.children %}
+                                <ul>
+                                    {% for h3 in h2.children %}
+                                        <li>
+                                            <a href="{{h3.permalink | safe}}">{{ h3.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+  </section>
+
+  <section class="content">
+    {{ page.content | safe }}
+  </section>
+  
+  <section class="footer">
+    <div class="left">
+    </div>
+    <div class="middle"><a href="/" class="next">Back to Home</a></div>
+    <div class="right">
+    </div>
+  </section>
+  
+</article>
+{% endblock content %}
+
+{% block footer %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+{% endblock footer %}

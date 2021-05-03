@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="postfeed">
+  <h1 class="postfeed-title">
+    {{ section.title }}
+  </h1>
+  <div class="postfeed-list">
+    {% for page in section.pages %}
+    <article class="postfeed-item"><a href="{{ page.permalink | safe }}">
+        <div class="postfeed-item-inner">
+          <span class="meta">{{ page.date }}</span>
+          <h2 class="title">{{ page.title }}</h2>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
